@@ -2,7 +2,7 @@
 
 This is a test banner for the Code Challenge.
 
-## Tecnologias
+## Technologies
 
 I always prefer to create simple solutions to the problems and focus on UI Design, not overengineering the things. This banner use GSAP library, HTML5 and CSS.
 
