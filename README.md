@@ -12,7 +12,7 @@ I always prefer to create simple solutions to the problems and focus on UI Desig
 
 ## Improvements
 
-I could work with B.E.M. (block element modifier).
+I could work with B.E.M. (block element modifier) to improve how the appearance of css should appear in the code, but as many developers say: "do not to use B.E.M. The CSS gets weird", I left the CSS by default.
 
 ## Running
 
