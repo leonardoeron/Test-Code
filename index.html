@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="UTF-8">
+    	<!-- Load the TweenMax (GSAP) here -->
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+    	<style type="text/css">
+    	body
+        {
+			padding:0;
+            margin:10;
+            background:white;
+        }
+        a:visited {
+        	color: black;
+        }
+        a:link {
+        	color: black;
+        }
+        #ad{
+            width:300px;
+            height:250px;
+            overflow:hidden; /* Elements won't spill outside of the ad */
+            position:relative; /* Make it easier to position elements */
+            margin:0 auto;
+        }
+         #logo{
+            opacity: 1;
+            filter: alpha(opacity=1); /*For IE8 and earlier */
+			z-index:4;
+            position: absolute;
+        }
+        #razor{
+            top: -380px;
+            left: -190px;
+            width: 70%;
+            z-index: 3;
+            position: absolute;
+            overflow: hidden;
+        }
+        #final-razor{
+            left: -200px;
+            top: 122px;
+            overflow: hidden;
+            z-index: 5;
+            position: absolute;
+        }        
+        #cta{
+            bottom: 0;
+            z-index: 4;
+        }
+        .hidden-element{
+            overflow:hidden;
+        }
+        .absolute-element{
+            position:absolute;
+        }
+        .relative-element{
+            position:relative;
+            left: 0;
+        }        
+        .centered-in-middle{
+            z-index:2;
+        }
+        .always-visible{
+            z-index:4;
+            position: absolute;
+        }        
+	    </style>
+	</head>
+	<body>
+	<a id="aw0" target="_blank" href="#">
+		<div id="ad">
+			<!-- 1 - The logo always visible -->
+		    <img id="logo" class="always-visible" src="assets/logo.png"/>
+			<!-- 2 - As in foreground we've the razor's images -->
+		    <img id="razor" src="assets/razor.png"/>
+		    <img id="final-razor" src="assets/razorEnding.png"/> <!-- razorEnding image --> 
+		    <!-- 3 - The ice images --> 
+		    <div id="ice1-box" class="hidden-element absolute-element">
+		        <img id="ice1" class="relative-element centered-in-middle" src="assets/ice1.png"/>
+		    </div>
+		    <div id="ice2-box" class="hidden-element absolute-element">
+		        <img id="ice2" class="relative-element centered-in-middle" src="assets/ice2.png"/>
+		    </div>
+		    <div id="iceTop-box" class="hidden-element absolute-element">
+		        <img id="iceTop" class="relative-element centered-in-middle" src="assets/iceTop.png"/>
+		    </div> 	    
+		    <div id="ice4-box" class="hidden-element absolute-element">
+		        <img id="ice4" class="relative-element centered-in-middle" src="assets/ice3.png"/>
+		    </div>
+		    <!-- 4 - Here we've together all the parts of the woman -->
+		    <img class="absolute-element" src="assets/girlStrip.png"/>
+		    <img class="absolute-element" src="assets/girlTop.png"/>
+		    <img class="absolute-element" src="assets/girlBottom.png"/>
+		    <!-- 5 - CTA on the bottom and always visible too -->
+		    <img id="cta" class="always-visible" src="assets/cta.png"> 	    
+		</div>
+	</a>
+	<script type="text/javascript">
+	    document.addEventListener('DOMContentLoaded', function() {
+	        var tl = new TimelineMax();
+	        tl.to("#banner", .65, {})
+	            //first shave
+	            .to('#ice1-box', 0.5, {left: "300px"})
+	            .to('#ice1', 0.5, {left: "-300px"}, "-=.5")
+	            .to("#razor", 1.3, {transformOrigin: "360px 200px", rotation: -160, ease: Power1.easeOut}, "-=.95")
+	            .set("#razor", {css:{scaleY: -1, left: "-140px", top:"-390px"}})
+	            //second shave
+	            .to("#banner", .65, {})
+	            .to('#ice2-box', 0.5, {left: "-300px"})
+	            .to('#ice2', 0.5, {left: "300px"}, "-=.5")
+	            .to("#razor", 1.5, {left:"-180px", top: "-200px", rotation: 10, ease: Power1.easeOut}, "-=.95")
+	            .set("#razor", {css:{transform: "rotateZ(-100deg)", top: "-480px", left:"-740px"}})
+	            //third shave
+	            .to("#banner", .65, {})
+	            .to('#iceTop-box', 0.5, {left: "300px"})
+	            .to('#iceTop', 0.5, {left: "-300px"}, "-=.5")
+	            .to('#razor', 1.3, {left:"100px", rotation: -110, ease: Power1.easeOut}, "-=.95")
+	            .set("#razor", {css:{top: "270px", left: "290px", transform: "rotateZ(90deg)"}})
+	            //fourth shave
+	            .to("#banner", .65, {})
+	            .to('#ice4-box', 0.5, {left: "-300px"})
+	            .to('#ice4', 0.5, {left: "300px"}, "-=.5")
+	            .to("#razor", 1.3, {left: "-630px", rotation: 110, top: "165px", ease: Power1.easeOut}, "-=.95")
+	            //razor ending
+	            .to("#final-razor", 0.5, {left: "4px", ease: Back.easeOut})
+	    });
+	</script>
+	</body>
+</html>
